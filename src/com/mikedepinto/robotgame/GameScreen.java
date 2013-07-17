@@ -196,6 +196,10 @@ public class GameScreen extends Screen {
 					robot.setMovingRight(true);
 
 				}
+                if (event.x < 399 && event.x > 100){
+                    robot.moveLeft();
+                    robot.setMovingLeft(true);
+                }
 
 			}
 
@@ -216,6 +220,9 @@ public class GameScreen extends Screen {
 					// Move right.
 					robot.stopRight();
 				}
+                if (event.x < 399 && event.x > 100){
+                    robot.stopLeft();
+                }
 			}
 
 		}
