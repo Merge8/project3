@@ -22,6 +22,8 @@ public class LoadingScreen extends Screen {
 		Assets.characterJump = g.newImage("jumped.png", ImageFormat.ARGB4444);
 		Assets.characterDown = g.newImage("down.png", ImageFormat.ARGB4444);
 
+        // import sword
+       Assets.characterSword = g.newImage("sword1.png", ImageFormat.ARGB4444);
 		
 		Assets.heliboy = g.newImage("heliboy.png", ImageFormat.ARGB4444);
 		Assets.heliboy2 = g.newImage("heliboy2.png", ImageFormat.ARGB4444);

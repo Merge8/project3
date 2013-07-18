@@ -27,7 +27,7 @@ public class GameScreen extends Screen {
 	public static Heliboy hb, hb2;
 
 	private Image currentSprite, character, character2, character3, heliboy,
-			heliboy2, heliboy3, heliboy4, heliboy5;
+			heliboy2, heliboy3, heliboy4, heliboy5, characterSword;
 	private Animation anim, hanim;
 
 	private ArrayList<Tile> tilearray = new ArrayList<Tile>();
@@ -49,6 +49,9 @@ public class GameScreen extends Screen {
 		character = Assets.character;
 		character2 = Assets.character2;
 		character3 = Assets.character3;
+
+        // Load Character Wep
+        characterSword = Assets.characterSword;
 
 		heliboy = Assets.heliboy;
 		heliboy2 = Assets.heliboy2;
@@ -335,6 +338,9 @@ public class GameScreen extends Screen {
 
 		g.drawImage(currentSprite, robot.getCenterX() - 61,
 				robot.getCenterY() - 63);
+        // Draw Sword
+        g.drawImage(characterSword, robot.getCenterX() + 5, robot.getCenterY() + 20);
+
 		g.drawImage(hanim.getImage(), hb.getCenterX() - 48,
 				hb.getCenterY() - 48);
 		g.drawImage(hanim.getImage(), hb2.getCenterX() - 48,
