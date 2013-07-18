@@ -39,7 +39,7 @@ public class Robot {
 	public void update() {
 		// Moves Character or Scrolls Background accordingly.
 
-		if (speedX < 0) {
+		if (speedX < 0 && centerX > 300) {
 			centerX += speedX;
 		}
 		if (speedX == 0 || speedX < 0) {
@@ -47,13 +47,20 @@ public class Robot {
 			bg2.setSpeedX(0);
 
 		}
-		if (centerX <= 200 && speedX > 0) {
+		if (centerX <= 500 && speedX > 0) {
 			centerX += speedX;
 		}
-		if (speedX > 0 && centerX > 200) {
+        if (centerX <200 && speedX < 0){
+            centerX += speedX;
+        }
+		if (speedX > 0 && centerX > 500) {
 			bg1.setSpeedX(-MOVESPEED / 5);
 			bg2.setSpeedX(-MOVESPEED / 5);
 		}
+        if (centerX <= 300 && speedX <0){
+            bg1.setSpeedX(MOVESPEED / 5);
+            bg2.setSpeedX(MOVESPEED / 5);
+        }
 
 		// Updates Y Position
 		centerY += speedY;
@@ -67,9 +74,9 @@ public class Robot {
 		}
 
 		// Prevents going beyond X coordinate of 0
-		if (centerX + speedX <= 60) {
-			centerX = 61;
-		}
+		//if (centerX + speedX <= 60) {
+		//	centerX = 61;
+		//}
 
 		rect.set(centerX - 34, centerY - 63, centerX + 34, centerY);
 		rect2.set(rect.left, rect.top + 63, rect.left+68, rect.top + 128);
