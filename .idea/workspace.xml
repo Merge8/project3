@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2578967f-4b98-4167-ad4f-d49ebc89452d" name="Default" comment="gave character a sword">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/MainAttack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/menutheme.mp3" afterPath="$PROJECT_DIR$/assets/menutheme.mp3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Assets.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Assets.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Enemy.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Enemy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/GameScreen.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/GameScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Heliboy.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Heliboy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/LoadingScreen.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/LoadingScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Projectile.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Projectile.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Robot.java" afterPath="$PROJECT_DIR$/src/com/mikedepinto/robotgame/Robot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/raw/map1.txt" afterPath="$PROJECT_DIR$/res/raw/map1.txt" />
+    <list default="true" id="2578967f-4b98-4167-ad4f-d49ebc89452d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="kiloboltrobotgamecomplete-3.iws" />
@@ -497,7 +487,11 @@
       <created>1374115437900</created>
       <updated>1374115437900</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changes">
+      <created>1375823422141</created>
+      <updated>1375823422141</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -572,7 +566,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="gave character a sword" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -590,6 +584,7 @@
     <MESSAGE value="Create move Left" />
     <MESSAGE value="Some changes, Character model update" />
     <MESSAGE value="gave character a sword" />
+    <MESSAGE value="Changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
