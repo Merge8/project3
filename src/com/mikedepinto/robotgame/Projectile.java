@@ -42,9 +42,11 @@ public class Projectile {
 			}
 			if (GameScreen.hb.health == 0) {
 				GameScreen.hb.setCenterX(-100);
-				
+                GameScreen.getRobot().robotXP += GameScreen.hb.xpValue;
+                GameScreen.getRobot().levelUp();
 
-			}
+
+            }
 
 		}
 		if (Rect.intersects(r, GameScreen.hb2.r)){
@@ -55,7 +57,8 @@ public class Projectile {
 			}
 			if (GameScreen.hb2.health == 0) {
 				GameScreen.hb2.setCenterX(-100);
-				
+                GameScreen.getRobot().robotXP += GameScreen.hb.xpValue;
+                GameScreen.getRobot().levelUp();
 
 			}
 

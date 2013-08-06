@@ -10,13 +10,25 @@ public class Enemy {
 	private Robot robot = GameScreen.getRobot();
 
 	public Rect r = new Rect(0, 0, 0, 0);
-	public int health = 5;
 
+
+
+    public int health = 5;
+    public int damage;
 	private int movementSpeed;
+    public int xpValue;
+    public int jumpSpeed;
+    public int speedY = 0;
+
+
+    public boolean jumped;
 
 	// Behavioral Methods
 	public void update() {
-		follow();
+		if (health >0) {
+        follow();
+        }
+
 		centerX += speedX;
 		speedX = bg.getSpeedX() * 5 + movementSpeed;
 		r.set(centerX - 25, centerY - 25, centerX + 25, centerY + 35);
@@ -32,11 +44,50 @@ public class Enemy {
 		if (Rect.intersects(r, Robot.rect)|| Rect.intersects(r, Robot.rect2)
 				|| Rect.intersects(r, Robot.rect3) || Rect.intersects(r, Robot.rect4)) {
 
-		}
+            // if enemy runs into character
+
+            robot.robotHP = robot.getRobotHP() - damage;
+            if (robot.getCenterX() < centerX) {
+            robot.centerX -= 5;
+            robot.centerX -= 5;
+            robot.centerX -= 5;
+            robot.centerX -= 5;
+            robot.centerX -= 5;
+            } else if (robot.getCenterX() > centerX){
+                robot.centerX += 5;
+                robot.centerX += 5;
+                robot.centerX += 5;
+                robot.centerX += 5;
+                robot.centerX += 5;
+            } else {
+
+            }
+
+
+
+        }
 	}
 
+    public void jump() {
+
+
+            if (centerY > 150 && jumped == false){
+                centerY += jumpSpeed;
+                centerY += jumpSpeed;
+                if (centerY < 150){
+                jumped = true;
+            }
+            } else if (centerY > 350 && jumped == true);
+        centerY -= jumpSpeed;
+        if (centerY > 350){
+        jumped = false;
+        }
+
+        }
+
+
 	public void follow() {
-		
+		jump();
 		if (centerX < -95 || centerX > 810){
 			movementSpeed = 0;
 		}
@@ -56,10 +107,15 @@ public class Enemy {
 
 	}
 
+
+
+
 	public void die() {
 
 	}
-
+    public int getHealth() {
+        return health;
+    }
 	public void attack() {
 
 	}

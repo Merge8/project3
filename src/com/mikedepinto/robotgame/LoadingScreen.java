@@ -38,7 +38,14 @@ public class LoadingScreen extends Screen {
 		Assets.tilegrassBot = g.newImage("tilegrassbot.png", ImageFormat.RGB565);
 		Assets.tilegrassLeft = g.newImage("tilegrassleft.png", ImageFormat.RGB565);
 		Assets.tilegrassRight = g.newImage("tilegrassright.png", ImageFormat.RGB565);
-		
+
+
+        // import UI
+        Assets.rightArrow = g.newImage("arrow.png", ImageFormat.ARGB4444);
+        Assets.attackButton = g.newImage("attackButton.png", ImageFormat.ARGB4444);
+        Assets.jumpButton = g.newImage("jumpButton.png", ImageFormat.ARGB4444);
+        Assets.attackButton2 = g.newImage("attackButton2.png", ImageFormat.ARGB4444);
+
 		Assets.button = g.newImage("button.jpg", ImageFormat.RGB565);
 
 		//This is how you would load a sound if you had one.

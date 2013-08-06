@@ -171,19 +171,23 @@ public class GameScreen extends Screen {
 			TouchEvent event = touchEvents.get(i);
 			if (event.type == TouchEvent.TOUCH_DOWN) {
 
-				if (inBounds(event, 0, 285, 65, 65)) {
+				if (inBounds(event, 700, 250, 100, 100)) {
 					robot.jump();
 					currentSprite = anim.getImage();
 					robot.setDucked(false);
 				}
 
-				else if (inBounds(event, 0, 350, 65, 65)) {
+				else if (inBounds(event, 600, 350, 65, 65)) {
 
 					if (robot.isDucked() == false && robot.isJumped() == false
 							&& robot.isReadyToFire()) {
 						robot.shoot();
 					}
-				}
+				} else
+                    if(inBounds(event, 700,350,100,100)){
+                        robot.MainAttack();
+
+                    }
 
 				else if (inBounds(event, 0, 415, 65, 65)
 						&& robot.isJumped() == false) {
@@ -193,7 +197,17 @@ public class GameScreen extends Screen {
 
 				}
 
-				if (event.x > 400) {
+
+                if (inBounds(event,100,350,100,100)){
+                    robot.moveLeft();
+                    robot.setMovingLeft(true);
+                }
+
+                if (inBounds(event,240,350,100,100)) {
+                    robot.moveRight();
+                    robot.setMovingRight(true);
+                }
+				/*if (event.x > 400) {
 					// Move right.
 					robot.moveRight();
 					robot.setMovingRight(true);
@@ -202,7 +216,7 @@ public class GameScreen extends Screen {
                 if (event.x < 399 && event.x > 100){
                     robot.moveLeft();
                     robot.setMovingLeft(true);
-                }
+                }*/
 
 			}
 
@@ -218,12 +232,17 @@ public class GameScreen extends Screen {
 					pause();
 
 				}
-
-				if (event.x > 400) {
+                if (inBounds(event,240,350,100,100)) {
+                    robot.stopRight();
+                }
+			/*	if (event.x > 400) {
 					// Move right.
 					robot.stopRight();
 				}
                 if (event.x < 399 && event.x > 100){
+                    robot.stopLeft();
+                }  */
+                if (inBounds(event,100,350,100,100)){
                     robot.stopLeft();
                 }
 			}
@@ -235,6 +254,9 @@ public class GameScreen extends Screen {
 		if (livesLeft == 0) {
 			state = GameState.GameOver;
 		}
+        if (robot.getRobotHP() <= 0){
+            state = GameState.GameOver;
+        }
 
 		// 3. Call individual update() methods here.
 		// This is where all the game updates happen.
@@ -255,6 +277,15 @@ public class GameScreen extends Screen {
 				projectiles.remove(i);
 			}
 		}
+        ArrayList mainAttack = robot.getMainAttack();
+        for (int i = 0; i < mainAttack.size(); i++) {
+            MainAttack ma = (MainAttack) mainAttack.get(i);
+            if (ma.isVisible() == true) {
+                ma.update();
+            } else {
+                mainAttack.remove(i);
+            }
+        }
 
 		updateTiles();
 		hb.update();
@@ -334,6 +365,20 @@ public class GameScreen extends Screen {
 			Projectile p = (Projectile) projectiles.get(i);
 			g.drawRect(p.getX(), p.getY(), 10, 5, Color.YELLOW);
 		}
+
+        ArrayList mainAttack = robot.getMainAttack();
+        for (int i = 0; i < mainAttack.size(); i++) {
+            MainAttack ma = (MainAttack) mainAttack.get(i);
+            g.drawRect(ma.getX(), ma.getY(), 50, 50, Color.RED);
+        }
+		// Character status bar
+
+        g.drawString("Level: " + robot.getLevel() + " HP: " + robot.getRobotHP() + " MP: " + robot.getRobotMana() + " XP: " + robot.getRobotXP() + " / " + robot.getXpToLevel(), 300, 25, paint);
+        g.drawString("X: " + robot.getCenterX() + " Y: " + robot.getCenterY(), 300, 100, paint);
+
+        g.drawString("" + robot.getTotalX() , 300,150,paint);
+        g.drawString("" + hb.getCenterY(), 400,150, paint);
+
 		// First draw the game elements.
 
 		g.drawImage(currentSprite, robot.getCenterX() - 61,
@@ -341,16 +386,27 @@ public class GameScreen extends Screen {
         // Draw Sword
         g.drawImage(characterSword, robot.getCenterX() + 5, robot.getCenterY() + 20);
 
+
+        if (hb.getHealth() > 0){
+        g.drawString(" " +hb.getHealth(), hb.getCenterX(), hb.getCenterY() - 100,paint);
 		g.drawImage(hanim.getImage(), hb.getCenterX() - 48,
 				hb.getCenterY() - 48);
-		g.drawImage(hanim.getImage(), hb2.getCenterX() - 48,
+        }
+        if (hb2.getHealth() > 0){
+        g.drawString(" " +hb2.getHealth(), hb2.getCenterX(), hb2.getCenterY() - 100,paint);
+
+        g.drawImage(hanim.getImage(), hb2.getCenterX() - 48,
 				hb2.getCenterY() - 48);
+        }
+
 
 		// Example:
 		// g.drawImage(Assets.background, 0, 0);
 		// g.drawImage(Assets.character, characterX, characterY);
 
 		// Secondly, draw the UI above the game elements.
+
+
 		if (state == GameState.Ready)
 			drawReadyUI();
 		if (state == GameState.Running)
@@ -409,16 +465,23 @@ public class GameScreen extends Screen {
 		g.drawARGB(155, 0, 0, 0);
 		g.drawString("Tap to Start.", 400, 240, paint);
 
-	}
+
+    }
 
 	private void drawRunningUI() {
 		Graphics g = game.getGraphics();
-		g.drawImage(Assets.button, 0, 285, 0, 0, 65, 65);
-		g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
-		g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
-		g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);
+		//g.drawImage(Assets.button, 0, 285, 0, 0, 65, 65);
+		//g.drawImage(Assets.button, 0, 350, 0, 65, 65, 65);
+		//g.drawImage(Assets.button, 0, 415, 0, 130, 65, 65);
+		//g.drawImage(Assets.button, 0, 0, 0, 195, 35, 35);
 
-	}
+        g.drawImage(Assets.rightArrow, 100,350);
+        g.drawImage(Assets.rightArrow, 240,350);
+        g.drawImage(Assets.attackButton, 600,350);
+        g.drawImage(Assets.jumpButton, 700, 250);
+        g.drawImage(Assets.attackButton2, 700, 350);
+
+    	}
 
 	private void drawPausedUI() {
 		Graphics g = game.getGraphics();
