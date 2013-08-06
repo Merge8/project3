@@ -87,7 +87,7 @@ public class Enemy {
 
 
 	public void follow() {
-		jump();
+		//jump();
 		if (centerX < -95 || centerX > 810){
 			movementSpeed = 0;
 		}
