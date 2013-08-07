@@ -72,6 +72,21 @@ public class MainAttack extends Robot {
             }
 
         }
+        if (Rect.intersects(r, GameScreen.hb3.r)){
+            visible = false;
+
+            if (GameScreen.hb3.health > 0) {
+                GameScreen.hb3.health -= 1;
+            }
+            if (GameScreen.hb3.health == 0) {
+                GameScreen.hb3.setCenterX(-100);
+                GameScreen.getRobot().robotXP += GameScreen.hb.xpValue;
+                GameScreen.getRobot().levelUp();
+
+
+            }
+
+        }
     }
 
 

@@ -24,7 +24,7 @@ public class GameScreen extends Screen {
 
 	private static Background bg1, bg2;
 	private static Robot robot;
-	public static Heliboy hb, hb2;
+	public static Heliboy hb, hb2, hb3;
 
 	private Image currentSprite, character, character2, character3, heliboy,
 			heliboy2, heliboy3, heliboy4, heliboy5, characterSword;
@@ -44,9 +44,12 @@ public class GameScreen extends Screen {
 		bg2 = new Background(2160, 0);
 		robot = new Robot();
 		hb = new Heliboy(340, 360);
-		hb2 = new Heliboy(700, 360);
+		hb2 = new Heliboy(1500, 360);
+        hb3 = new Heliboy(3000, 360);
 
-		character = Assets.character;
+
+
+        character = Assets.character;
 		character2 = Assets.character2;
 		character3 = Assets.character3;
 
@@ -290,6 +293,7 @@ public class GameScreen extends Screen {
 		updateTiles();
 		hb.update();
 		hb2.update();
+        hb3.update();
 		bg1.update();
 		bg2.update();
 		animate();
@@ -391,14 +395,26 @@ public class GameScreen extends Screen {
         g.drawString(" " +hb.getHealth(), hb.getCenterX(), hb.getCenterY() - 100,paint);
 		g.drawImage(hanim.getImage(), hb.getCenterX() - 48,
 				hb.getCenterY() - 48);
+        } else if (hb.getHealth() <= 0 ){
+            hb = new Heliboy(4040, 360);
+
         }
         if (hb2.getHealth() > 0){
         g.drawString(" " +hb2.getHealth(), hb2.getCenterX(), hb2.getCenterY() - 100,paint);
 
         g.drawImage(hanim.getImage(), hb2.getCenterX() - 48,
 				hb2.getCenterY() - 48);
+        } else if (hb2.getHealth() <= 0){
+            hb2 = new Heliboy(1700, 360);
+
         }
 
+        if (hb3.getHealth() > 0){
+            g.drawString(" " +hb3.getHealth(), hb3.getCenterX(), hb3.getCenterY() - 100,paint);
+
+            g.drawImage(hanim.getImage(), hb3.getCenterX() - 48,
+                    hb2.getCenterY() - 48);
+        }
 
 		// Example:
 		// g.drawImage(Assets.background, 0, 0);
@@ -442,6 +458,7 @@ public class GameScreen extends Screen {
 		robot = null;
 		hb = null;
 		hb2 = null;
+        hb3 = null;
 		currentSprite = null;
 		character = null;
 		character2 = null;
