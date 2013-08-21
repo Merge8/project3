@@ -10,6 +10,7 @@ public class Assets {
     characterSword;
 	public static Image tiledirt, tilegrassTop, tilegrassBot, tilegrassLeft, tilegrassRight, characterJump, characterDown;
 	public static Image button, rightArrow, attackButton, jumpButton, attackButton2;
+    public static Image store;
 	public static Sound click;
 	public static Music theme;
 	
